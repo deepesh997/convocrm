@@ -22,9 +22,8 @@
 // this page after email verification.
 // ============================================================
 
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState, Suspense, use } from 'react';
 import Link from 'next/link';
-import { useParams } from 'next/navigation';
 import { toast } from 'sonner';
 import {
   AlertTriangle,
@@ -90,9 +89,25 @@ const FAIL_COPY: Record<PeekFail['reason'], { title: string; body: string }> = {
   },
 };
 
-export default function JoinPage() {
-  const params = useParams<{ token: string }>();
-  const token = params?.token;
+export default function JoinPage({ params }: { params: Promise<{ token: string }> }) {
+  return (
+    <Suspense
+      fallback={
+        <Card className="w-full max-w-md border-border bg-card">
+          <CardContent className="flex flex-col items-center gap-3 py-12">
+            <Loader2 className="size-6 animate-spin text-primary" />
+            <p className="text-sm text-muted-foreground">Verifying invitation…</p>
+          </CardContent>
+        </Card>
+      }
+    >
+      <JoinPageInner params={params} />
+    </Suspense>
+  );
+}
+
+function JoinPageInner({ params }: { params: Promise<{ token: string }> }) {
+  const { token } = use(params);
 
   const [peek, setPeek] = useState<PeekResult | null>(null);
   // Local auth probe — the AuthProvider lives inside the (dashboard)

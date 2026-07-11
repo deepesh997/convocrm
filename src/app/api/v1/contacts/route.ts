@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 // ============================================================
 // GET  /api/v1/contacts  — list contacts (scope: contacts:read)
 // POST /api/v1/contacts  — create a contact  (scope: contacts:write)
