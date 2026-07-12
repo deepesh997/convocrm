@@ -1,5 +1,3 @@
-export const dynamic = 'force-dynamic';
-
 // ============================================================
 // GET  /api/v1/webhooks — list webhook endpoints (scope: webhooks:manage)
 // POST /api/v1/webhooks — register an endpoint    (scope: webhooks:manage)

@@ -1,5 +1,3 @@
-export const dynamic = 'force-dynamic'
-
 import { timingSafeEqual } from 'node:crypto'
 import { NextResponse } from 'next/server'
 import { supabaseAdmin } from '@/lib/flows/admin-client'

@@ -1,5 +1,3 @@
-export const dynamic = 'force-dynamic';
-
 // ============================================================
 // GET /api/v1/me — public API identity probe.
 //

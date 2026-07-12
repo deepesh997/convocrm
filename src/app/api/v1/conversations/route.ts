@@ -1,5 +1,3 @@
-export const dynamic = 'force-dynamic';
-
 // ============================================================
 // GET /api/v1/conversations — list conversations (scope: conversations:read)
 //
